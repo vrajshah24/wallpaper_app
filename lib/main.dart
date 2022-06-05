@@ -37,43 +37,47 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        image: DecorationImage(image: image[index], fit: BoxFit.cover),
+      appBar: AppBar(
+        title: Text('Flutter Demo'),
       ),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-        colorButton(
-          Icon(Icons.sunny),
-          Colors.yellow,
-          (() {
-            setState(() {
-              sun = true;
-              moon = false;
-              cloud = false;
-              index = 0;
-            });
-          }),
-          sun,
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          image: DecorationImage(image: image[index], fit: BoxFit.cover),
         ),
-        colorButton(Icon(Icons.nightlight), Colors.pinkAccent, () {
-          setState(() {
-            index = 1;
-            sun = false;
-            moon = true;
-            cloud = false;
-          });
-        }, moon),
-        colorButton(Icon(Icons.cloud), Colors.lightBlueAccent.shade100, () {
-          setState(() {
-            index = 2;
-            sun = false;
-            moon = false;
-            cloud = true;
-          });
-        }, cloud),
-      ]),
-    ));
+        child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+          colorButton(
+            Icon(Icons.sunny),
+            Colors.yellow,
+            (() {
+              setState(() {
+                sun = true;
+                moon = false;
+                cloud = false;
+                index = 0;
+              });
+            }),
+            sun,
+          ),
+          colorButton(Icon(Icons.nightlight), Colors.pinkAccent, () {
+            setState(() {
+              index = 1;
+              sun = false;
+              moon = true;
+              cloud = false;
+            });
+          }, moon),
+          colorButton(Icon(Icons.cloud), Colors.lightBlueAccent.shade100, () {
+            setState(() {
+              index = 2;
+              sun = false;
+              moon = false;
+              cloud = true;
+            });
+          }, cloud),
+        ]),
+      ),
+    );
   }
 
   Widget colorButton(Icon i, Color c, void function(), bool time) {
